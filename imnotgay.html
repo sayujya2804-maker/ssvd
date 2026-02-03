@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You, Shaurya 💗</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Quicksand:wght@300;400;500;600&family=Dancing+Script:wght@400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-rose: #c44569;
+            --soft-rose: #e8a0a0;
+            --blush: #f5c6c6;
+            --cream: #fdf8f5;
+            --warm-cream: #fff9f5;
+            --soft-gold: #d4a574;
+            --gold-shimmer: #e8c89e;
+            --deep-burgundy: #8b3a4c;
+            --text-warm: #5c3d3d;
+            --text-soft: #8b6b6b;
+            --rose-shadow: rgba(196, 69, 105, 0.15);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: var(--cream);
+            min-height: 100vh;
+            color: var(--text-warm);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Warm Gradient Background */
+        .background-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(245, 198, 198, 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(232, 160, 160, 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(212, 165, 116, 0.1) 0%, transparent 60%),
+                linear-gradient(180deg, var(--warm-cream) 0%, var(--cream) 50%, var(--blush) 100%);
+            z-index: 0;
+        }
+
+        /* Floating Hearts */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            opacity: 0;
+            animation: floatHeart 15s ease-in-out infinite;
+        }
+
+        .heart svg {
+            fill: var(--soft-rose);
+            filter: drop-shadow(0 2px 4px rgba(196, 69, 105, 0.2));
+        }
+
+        @keyframes floatHeart {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(0deg) scale(0.5);
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100vh) rotate(45deg) scale(1);
+            }
+        }
+
+        /* Sparkle Elements */
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--gold-shimmer);
+            border-radius: 50%;
+            animation: sparkle 3s ease-in-out infinite;
+            box-shadow: 0 0 10px var(--soft-gold);
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+        }
+
+        /* Music Toggle */
+        .music-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid var(--blush);
+            border-radius: 50px;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-warm);
+            box-shadow: 0 4px 20px var(--rose-shadow);
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .music-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px var(--rose-shadow);
+            background: white;
+        }
+
+        .music-toggle.playing {
+            background: linear-gradient(135deg, var(--blush), var(--soft-rose));
+            color: white;
+            border-color: var(--soft-rose);
+        }
+
+        .music-icon {
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .music-toggle.playing .music-icon {
+            animation: musicPulse 1s ease-in-out infinite;
+        }
+
+        @keyframes musicPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* Main Content */
+        .content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 20px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Opening Section */
+        .opening {
+            text-align: center;
+        }
+
+        .greeting {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            color: var(--deep-rose);
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease 0.3s forwards;
+        }
+
+        .opening-message {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 300;
+            color: var(--text-soft);
+            font-style: italic;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease 0.8s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .opening-decoration {
+            margin-top: 50px;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease 1.3s forwards;
+        }
+
+        .heart-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            color: var(--soft-rose);
+            font-size: 1.2rem;
+        }
+
+        .heart-divider .line {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--soft-rose), transparent);
+        }
+
+        .scroll-indicator {
+            margin-top: 60px;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease 1.8s forwards;
+        }
+
+        .scroll-text {
+            font-size: 0.9rem;
+            color: var(--text-soft);
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .scroll-arrow {
+            font-size: 1.5rem;
+            color: var(--soft-rose);
+            animation: gentleBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes gentleBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(8px); }
+        }
+
+        /* Gratitude Section */
+        .gratitude-section {
+            padding: 100px 20px;
+        }
+
+        .gratitude-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 30px;
+            padding: 55px 50px;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 
+                0 20px 60px var(--rose-shadow),
+                inset 0 0 80px rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(245, 198, 198, 0.5);
+            position: relative;
+        }
+
+        .gratitude-card::before {
+            content: '💗';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2.5rem;
+            background: var(--cream);
+            padding: 0 20px;
+        }
+
+        .gratitude-header {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: var(--deep-rose);
+            margin-bottom: 30px;
+        }
+
+        .gratitude-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            line-height: 2;
+            color: var(--text-warm);
+        }
+
+        .gratitude-text p {
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+
+        .gratitude-text p.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gratitude-text .emphasis {
+            color: var(--deep-rose);
+            font-style: italic;
+        }
+
+        /* Valentine Ask Section */
+        .ask-section {
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .ask-prelude {
+            font-family: 'Caveat', cursive;
+            font-size: 1.6rem;
+            color: var(--text-soft);
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease;
+        }
+
+        .ask-prelude.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .ask-main {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .ask-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 350px;
+            height: 150px;
+            background: radial-gradient(ellipse, rgba(196, 69, 105, 0.15) 0%, transparent 70%);
+            animation: glowPulse 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { 
+                opacity: 0.5;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% { 
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+        }
+
+        .ask-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.2rem;
+            color: var(--deep-rose);
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: scale(0.95);
+            transition: all 1.2s ease 0.3s;
+            text-shadow: 0 2px 20px var(--rose-shadow);
+        }
+
+        .ask-text.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .ask-heart {
+            display: inline-block;
+            animation: heartBeat 2s ease-in-out infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            15% { transform: scale(1.15); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.1); }
+        }
+
+        .ask-follow {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--text-soft);
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.8;
+            opacity: 0;
+            animation: fadeIn 1.5s ease 0.8s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .romantic-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin: 50px 0;
+            color: var(--soft-rose);
+        }
+
+        .romantic-divider .rose {
+            font-size: 1.5rem;
+        }
+
+        .romantic-divider .line {
+            width: 80px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--soft-rose), transparent);
+        }
+
+        /* What It Means Section */
+        .meaning-section {
+            padding: 80px 20px;
+        }
+
+        .meaning-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(253,248,245,0.9));
+            border-radius: 30px;
+            padding: 50px 45px;
+            max-width: 580px;
+            box-shadow: 0 15px 50px var(--rose-shadow);
+            border: 1px solid rgba(245, 198, 198, 0.4);
+        }
+
+        .meaning-header {
+            font-family: 'Caveat', cursive;
+            font-size: 1.8rem;
+            color: var(--deep-rose);
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .meaning-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .meaning-item {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 18px 22px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            border-left: 3px solid var(--soft-rose);
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.6s ease;
+        }
+
+        .meaning-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .meaning-item:nth-child(1) { transition-delay: 0.1s; }
+        .meaning-item:nth-child(2) { transition-delay: 0.2s; }
+        .meaning-item:nth-child(3) { transition-delay: 0.3s; }
+        .meaning-item:nth-child(4) { transition-delay: 0.4s; }
+
+        .meaning-icon {
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .meaning-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: var(--text-warm);
+        }
+
+        .meaning-note {
+            text-align: center;
+            margin-top: 35px;
+            font-family: 'Caveat', cursive;
+            font-size: 1.4rem;
+            color: var(--text-soft);
+        }
+
+        /* Response Section */
+        .response-section {
+            padding: 80px 20px;
+        }
+
+        .response-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 35px;
+            padding: 55px 45px;
+            max-width: 520px;
+            text-align: center;
+            box-shadow: 
+                0 25px 70px var(--rose-shadow),
+                0 0 0 1px rgba(245, 198, 198, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .response-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--soft-rose), var(--deep-rose), var(--soft-gold), var(--deep-rose), var(--soft-rose));
+        }
+
+        .response-header {
+            font-family: 'Caveat', cursive;
+            font-size: 1.6rem;
+            color: var(--text-soft);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            align-items: center;
+        }
+
+        .response-btn {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 20px 45px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            min-width: 280px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .response-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .response-btn:hover::before {
+            left: 100%;
+        }
+
+        .response-btn.primary {
+            background: linear-gradient(135deg, var(--deep-rose), var(--soft-rose));
+            color: white;
+            box-shadow: 0 8px 30px rgba(196, 69, 105, 0.35);
+        }
+
+        .response-btn.primary:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(196, 69, 105, 0.45);
+        }
+
+        .response-btn.secondary {
+            background: white;
+            color: var(--deep-rose);
+            border: 2px solid var(--blush);
+            box-shadow: 0 6px 25px var(--rose-shadow);
+        }
+
+        .response-btn.secondary:hover {
+            transform: translateY(-4px) scale(1.02);
+            background: var(--cream);
+            border-color: var(--soft-rose);
+            box-shadow: 0 10px 35px var(--rose-shadow);
+        }
+
+        /* Response Messages */
+        .response-message {
+            display: none;
+            text-align: center;
+            padding: 50px 40px;
+            animation: responseAppear 1s ease forwards;
+        }
+
+        @keyframes responseAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .response-message.active {
+            display: block;
+        }
+
+        .response-emoji {
+            font-size: 4.5rem;
+            margin-bottom: 25px;
+            animation: emojiPop 0.8s ease;
+        }
+
+        @keyframes emojiPop {
+            0% { transform: scale(0) rotate(-180deg); }
+            60% { transform: scale(1.2) rotate(10deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+
+        .response-message h4 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: var(--deep-rose);
+            margin-bottom: 20px;
+        }
+
+        .response-message p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            color: var(--text-warm);
+            line-height: 1.9;
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
+        /* Reassurance Footer */
+        .footer-section {
+            padding: 60px 20px 100px;
+            text-align: center;
+        }
+
+        .footer-note {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 25px;
+            padding: 40px 45px;
+            max-width: 550px;
+            margin: 0 auto;
+            box-shadow: 0 10px 40px var(--rose-shadow);
+            border: 1px solid rgba(245, 198, 198, 0.3);
+        }
+
+        .footer-text {
+            font-family: 'Caveat', cursive;
+            font-size: 1.5rem;
+            color: var(--text-warm);
+            line-height: 1.8;
+        }
+
+        .footer-heart {
+            font-size: 2rem;
+            margin-top: 25px;
+            display: inline-block;
+            animation: heartBeat 2s ease-in-out infinite;
+        }
+
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.4rem;
+            color: var(--soft-rose);
+            margin-top: 25px;
+        }
+
+        /* Celebration Overlay */
+        .celebration-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            overflow: hidden;
+        }
+
+        .celebration-heart {
+            position: absolute;
+            animation: celebrateHeart 4s ease-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes celebrateHeart {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(0) rotate(0deg);
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100vh) scale(1) rotate(360deg);
+            }
+        }
+
+        /* Page Loader */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--cream), var(--blush));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+
+        .page-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .loader-heart {
+            font-size: 3.5rem;
+            animation: heartBeat 1.2s ease-in-out infinite;
+        }
+
+        .loader-text {
+            font-family: 'Caveat', cursive;
+            font-size: 1.4rem;
+            color: var(--text-warm);
+            margin-top: 20px;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .greeting {
+                font-size: 3rem;
+            }
+
+            .opening-message {
+                font-size: 1.3rem;
+                padding: 0 15px;
+            }
+
+            .gratitude-card {
+                padding: 45px 30px;
+                margin: 0 10px;
+            }
+
+            .gratitude-header {
+                font-size: 1.9rem;
+            }
+
+            .gratitude-text {
+                font-size: 1.2rem;
+            }
+
+            .ask-prelude {
+                font-size: 1.4rem;
+            }
+
+            .ask-text {
+                font-size: 2.4rem;
+            }
+
+            .ask-follow {
+                font-size: 1.2rem;
+                padding: 0 20px;
+            }
+
+            .meaning-card {
+                padding: 40px 30px;
+                margin: 0 10px;
+            }
+
+            .meaning-item {
+                padding: 15px 18px;
+            }
+
+            .meaning-text {
+                font-size: 1.1rem;
+            }
+
+            .response-container {
+                padding: 45px 30px;
+                margin: 0 10px;
+            }
+
+            .response-btn {
+                min-width: 250px;
+                padding: 18px 35px;
+                font-size: 1rem;
+            }
+
+            .footer-note {
+                padding: 35px 30px;
+                margin: 0 15px;
+            }
+
+            .footer-text {
+                font-size: 1.3rem;
+            }
+
+            .music-toggle {
+                padding: 10px 16px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .greeting {
+                font-size: 2.5rem;
+            }
+
+            .ask-text {
+                font-size: 2rem;
+            }
+
+            .response-btn {
+                min-width: 220px;
+            }
+
+            section {
+                padding: 60px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-heart">💗</div>
+            <p class="loader-text">Something special is loading...</p>
+        </div>
+    </div>
+
+    <!-- Background -->
+    <div class="background-gradient"></div>
+
+    <!-- Floating Hearts -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <!-- Celebration Overlay -->
+    <div class="celebration-overlay" id="celebrationOverlay"></div>
+
+    <!-- Music Toggle -->
+    <button class="music-toggle" id="musicToggle" aria-label="Toggle background music">
+        <span class="music-icon">🎵</span>
+        <span class="music-text">Play Music</span>
+    </button>
+
+     <audio id="bgMusic" loop preload="auto">
+    <source src="I Wanna Be Yours.mp3" type="audio/mpeg">
+
+    </audio>
+
+
+    <!-- Main Content -->
+    <div class="content">
+        <!-- Opening Section -->
+        <section class="opening" id="openingSection">
+            <h1 class="greeting">Hey Shaurya 💗</h1>
+            <p class="opening-message">I'm really glad you said yes.</p>
+            
+            <div class="opening-decoration">
+                <div class="heart-divider">
+                    <span class="line"></span>
+                    <span>♡</span>
+                    <span class="line"></span>
+                </div>
+            </div>
+
+            <div class="scroll-indicator">
+                <p class="scroll-text">Continue</p>
+                <div class="scroll-arrow">↓</div>
+            </div>
+        </section>
+
+        <!-- Gratitude Section -->
+        <section class="gratitude-section" id="gratitudeSection">
+            <div class="gratitude-card">
+                <h2 class="gratitude-header">Thank you ✨</h2>
+                <div class="gratitude-text">
+                    <p>When you said you wanted to know me better, I didn't quite know how to react.</p>
+                    <p>I think I smiled for the rest of that day — <span class="emphasis">maybe longer.</span></p>
+                    <p>Your honesty meant more to me than you probably realize. It made something that felt so heavy suddenly feel light.</p>
+                    <p>So, thank you. For being kind. For being open. For giving this a chance.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Valentine Ask Section -->
+        <section class="ask-section" id="askSection">
+            <p class="ask-prelude">I've been thinking, and I wanted to ask you something...</p>
+            
+            <div class="ask-main">
+                <div class="ask-glow"></div>
+                <h2 class="ask-text">
+                    Would you like to be my Valentine?
+                    <span class="ask-heart">💕</span>
+                </h2>
+            </div>
+
+            <p class="ask-follow">
+                Nothing big, nothing forced — just some time together, if you'd like.
+            </p>
+
+            <div class="romantic-divider">
+                <span class="line"></span>
+                <span class="rose">🌹</span>
+                <span class="line"></span>
+            </div>
+        </section>
+
+        <!-- What It Means Section -->
+        <section class="meaning-section" id="meaningSection">
+            <div class="meaning-card">
+                <h3 class="meaning-header">What this means to me 💭</h3>
+                <ul class="meaning-list">
+                    <li class="meaning-item">
+                        <span class="meaning-icon">☕</span>
+                        <span class="meaning-text">Spending a little time together, just the two of us</span>
+                    </li>
+                    <li class="meaning-item">
+                        <span class="meaning-icon">💬</span>
+                        <span class="meaning-text">Talking, laughing, and getting to know each other more</span>
+                    </li>
+                    <li class="meaning-item">
+                        <span class="meaning-icon">🌸</span>
+                        <span class="meaning-text">Being present, without any pressure or expectations</span>
+                    </li>
+                    <li class="meaning-item">
+                        <span class="meaning-icon">✨</span>
+                        <span class="meaning-text">Simply enjoying each other's company</span>
+                    </li>
+                </ul>
+                <p class="meaning-note">That's all. Nothing more, nothing less. 💛</p>
+            </div>
+        </section>
+
+        <!-- Response Section -->
+        <section class="response-section" id="responseSection">
+            <div class="response-container" id="responseButtons">
+                <p class="response-header">
+                    So, what do you say? 🌷
+                </p>
+                <div class="button-group">
+                    <button class="response-btn primary" onclick="handleResponse('yes')">
+                        Yes, I'd love to 💘
+                    </button>
+                    <button class="response-btn secondary" onclick="handleResponse('talk')">
+                        I'd like to talk about it 🌷
+                    </button>
+                </div>
+            </div>
+
+            <!-- Yes Response -->
+            <div class="response-message" id="yesResponse">
+                <div class="response-emoji">🥰💗</div>
+                <h4>You just made my heart so happy</h4>
+                <p>
+                    I'm smiling so much right now. Thank you for saying yes — I promise to make it special. Not in a big, overwhelming way, but in a way that feels like us. I can't wait to spend that time with you. 💕
+                </p>
+            </div>
+
+            <!-- Talk Response -->
+            <div class="response-message" id="talkResponse">
+                <div class="response-emoji">🌸💬</div>
+                <h4>Of course, let's talk</h4>
+                <p>
+                    I completely understand. There's no rush at all. Whenever you're ready, I'm here. We can figure this out together — no pressure, no expectations. Just us, being honest with each other. 💛
+                </p>
+            </div>
+        </section>
+
+        <!-- Footer Section -->
+        <section class="footer-section" id="footerSection">
+            <div class="footer-note">
+                <p class="footer-text">
+                    No matter what you choose,<br>
+                    I'm really happy we're here.<br><br>
+                    That you read this. That we're talking.<br>
+                    That's already more than enough for me.
+                </p>
+                <div class="footer-heart">💗</div>
+                <p class="signature">With all my warmth ✨</p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createFloatingHearts();
+            createSparkles();
+            
+            setTimeout(() => {
+                document.getElementById('pageLoader').classList.add('hidden');
+                initIntersectionObserver();
+            }, 1800);
+        });
+
+        // Create floating hearts
+        function createFloatingHearts() {
+            const container = document.getElementById('floatingHearts');
+            const heartSizes = [20, 25, 30, 35, 40];
+            
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                const size = heartSizes[Math.floor(Math.random() * heartSizes.length)];
+                
+                heart.innerHTML = `
+                    <svg width="${size}" height="${size}" viewBox="0 0 24 24">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                `;
+                
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 15 + 's';
+                heart.style.animationDuration = (12 + Math.random() * 8) + 's';
+                
+                // Vary the colors
+                const colors = ['#c44569', '#e8a0a0', '#f5c6c6', '#d4a574'];
+                heart.querySelector('svg').style.fill = colors[Math.floor(Math.random() * colors.length)];
+                
+                container.appendChild(heart);
+            }
+        }
+
+        // Create sparkle elements
+        function createSparkles() {
+            const container = document.getElementById('floatingHearts');
+            
+            for (let i = 0; i < 20; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.animationDelay = Math.random() * 3 + 's';
+                container.appendChild(sparkle);
+            }
+        }
+
+        // Music Toggle
+        const musicToggle = document.getElementById('musicToggle');
+        const bgMusic = document.getElementById('bgMusic');
+        let isPlaying = false;
+        let fadeInterval;
+
+        musicToggle.addEventListener('click', () => {
+            if (isPlaying) {
+                fadeOutMusic();
+                musicToggle.querySelector('.music-text').textContent = 'Play Music';
+                musicToggle.classList.remove('playing');
+            } else {
+                bgMusic.volume = 0;
+                bgMusic.play().then(() => {
+                    fadeInMusic();
+                    musicToggle.querySelector('.music-text').textContent = 'Playing';
+                    musicToggle.classList.add('playing');
+                }).catch(e => {
+                    console.log('Audio playback requires a source file');
+                    alert('Please add an audio file to enable music playback.');
+                });
+            }
+            isPlaying = !isPlaying;
+        });
+
+        function fadeInMusic() {
+            clearInterval(fadeInterval);
+            let vol = 0;
+            fadeInterval = setInterval(() => {
+                if (vol < 0.2) {
+                    vol += 0.01;
+                    bgMusic.volume = Math.min(vol, 0.2);
+                } else {
+                    clearInterval(fadeInterval);
+                }
+            }, 50);
+        }
+
+        function fadeOutMusic() {
+            clearInterval(fadeInterval);
+            let vol = bgMusic.volume;
+            fadeInterval = setInterval(() => {
+                if (vol > 0.01) {
+                    vol -= 0.01;
+                    bgMusic.volume = Math.max(vol, 0);
+                } else {
+                    bgMusic.pause();
+                    bgMusic.volume = 0;
+                    clearInterval(fadeInterval);
+                }
+            }, 50);
+        }
+
+        // Intersection Observer
+        function initIntersectionObserver() {
+            const observerOptions = {
+                threshold: 0.2,
+                rootMargin: '0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+
+                        // Animate gratitude paragraphs
+                        if (entry.target.classList.contains('gratitude-section')) {
+                            const paragraphs = entry.target.querySelectorAll('.gratitude-text p');
+                            paragraphs.forEach((p, index) => {
+                                setTimeout(() => p.classList.add('visible'), index * 350);
+                            });
+                        }
+
+                        // Animate ask section
+                        if (entry.target.classList.contains('ask-section')) {
+                            const prelude = entry.target.querySelector('.ask-prelude');
+                            const askText = entry.target.querySelector('.ask-text');
+                            
+                            setTimeout(() => prelude.classList.add('visible'), 200);
+                            setTimeout(() => askText.classList.add('visible'), 600);
+                        }
+
+                        // Animate meaning items
+                        if (entry.target.classList.contains('meaning-section')) {
+                            const items = entry.target.querySelectorAll('.meaning-item');
+                            items.forEach((item, index) => {
+                                setTimeout(() => item.classList.add('visible'), index * 200);
+                            });
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
+            });
+        }
+
+        // Handle Response
+        function handleResponse(type) {
+            const buttonsContainer = document.getElementById('responseButtons');
+            const yesResponse = document.getElementById('yesResponse');
+            const talkResponse = document.getElementById('talkResponse');
+
+            buttonsContainer.style.display = 'none';
+
+            if (type === 'yes') {
+                yesResponse.classList.add('active');
+                createCelebration();
+            } else {
+                talkResponse.classList.add('active');
+                createGentleHearts();
+            }
+        }
+
+        // Celebration effect
+        function createCelebration() {
+            const overlay = document.getElementById('celebrationOverlay');
+            const hearts = ['💗', '💕', '💖', '💘', '💝', '❤️', '🌹', '✨'];
+            
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'celebration-heart';
+                    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.bottom = '-50px';
+                    heart.style.fontSize = (1.5 + Math.random() * 2) + 'rem';
+                    heart.style.animationDuration = (3 + Math.random() * 2) + 's';
+                    overlay.appendChild(heart);
+                    
+                    setTimeout(() => heart.remove(), 5000);
+                }, i * 80);
+            }
+        }
+
+        // Gentle hearts for talk response
+        function createGentleHearts() {
+            const overlay = document.getElementById('celebrationOverlay');
+            const items = ['🌸', '🌷', '✨', '💛', '💫'];
+            
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const item = document.createElement('div');
+                    item.className = 'celebration-heart';
+                    item.textContent = items[Math.floor(Math.random() * items.length)];
+                    item.style.left = Math.random() * 100 + '%';
+                    item.style.bottom = '-50px';
+                    item.style.fontSize = (1.2 + Math.random() * 1) + 'rem';
+                    item.style.animationDuration = (4 + Math.random() * 2) + 's';
+                    overlay.appendChild(item);
+                    
+                    setTimeout(() => item.remove(), 6000);
+                }, i * 150);
+            }
+        }
+
+        // Smooth parallax on scroll
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrolled = window.pageYOffset;
+                    const sparkles = document.querySelectorAll('.sparkle');
+                    
+                    sparkles.forEach((sparkle, index) => {
+                        const speed = 0.02 + (index % 5) * 0.01;
+                        sparkle.style.transform = `translateY(${scrolled * speed}px)`;
+                    });
+                    
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    </script>
+</body>
+</html>
