@@ -166,6 +166,42 @@
             50% { transform: scale(1.2); }
         }
 
+        /* Secret Love Message */
+        .secret-love-message {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1001;
+            font-family: 'Caveat', cursive;
+            font-size: 1rem;
+            color: var(--deep-rose);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.8s ease;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 10px 18px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px var(--rose-shadow);
+            border: 1px solid rgba(196, 69, 105, 0.2);
+        }
+
+        .secret-love-message.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .secret-love-message::before {
+            content: '💕';
+            margin-right: 6px;
+        }
+
+        .secret-love-message::after {
+            content: '🐰';
+            margin-left: 6px;
+        }
+
         /* Main Content */
         .content {
             position: relative;
@@ -847,6 +883,13 @@
                 padding: 10px 16px;
                 font-size: 0.8rem;
             }
+
+            .secret-love-message {
+                bottom: 15px;
+                right: 15px;
+                font-size: 0.9rem;
+                padding: 8px 14px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -864,6 +907,12 @@
 
             section {
                 padding: 60px 15px;
+            }
+
+            .secret-love-message {
+                bottom: 10px;
+                right: 10px;
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -892,11 +941,14 @@
         <span class="music-text">Play Music</span>
     </button>
 
-     <audio id="bgMusic" loop preload="auto">
-    <source src="I Wanna Be Yours.mp3" type="audio/mpeg">
+    <!-- Secret Love Message (appears after clicking Yes) -->
+    <div class="secret-love-message" id="secretLoveMessage">
+        i love you partner
+    </div>
 
+    <audio id="bgMusic" loop preload="auto">
+        <source src="I Wanna Be Yours.mp3" type="audio/mpeg">
     </audio>
-
 
     <!-- Main Content -->
     <div class="content">
@@ -1189,12 +1241,18 @@
             const buttonsContainer = document.getElementById('responseButtons');
             const yesResponse = document.getElementById('yesResponse');
             const talkResponse = document.getElementById('talkResponse');
+            const secretMessage = document.getElementById('secretLoveMessage');
 
             buttonsContainer.style.display = 'none';
 
             if (type === 'yes') {
                 yesResponse.classList.add('active');
                 createCelebration();
+                
+                // Show the secret love message after a short delay
+                setTimeout(() => {
+                    secretMessage.classList.add('visible');
+                }, 1500);
             } else {
                 talkResponse.classList.add('active');
                 createGentleHearts();
@@ -1264,4 +1322,3 @@
     </script>
 </body>
 </html>
-
